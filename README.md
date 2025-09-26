@@ -1,16 +1,14 @@
 # 100,000 tests (10% fail) — Maven + JUnit 5, no parallel
 
-- 100 классов (`DynBatch001Test` … `DynBatch100Test`), по 1000 динамических тестов в каждом.
-- 10% фейлятся, остальные проходят.
-- Параллельный запуск **выключен**: `src/test/resources/junit-platform.properties` содержит
-  `junit.jupiter.execution.parallel.enabled=false`.
+- 100 classes (`DynBatch001Test` … `DynBatch100Test`), 1,000 dynamic tests in each.
+- 10% fail, the rest pass.
+- Parallel execution is disabled: src/test/resources/junit-platform.properties contains
+  junit.jupiter.execution.parallel.enabled=false
 
-## Запуск
-```bash
+Run:
 mvn -q test
-```
 
-## Как снова включить параллель при необходимости (без коммита)
-```bash
-mvn -q test -Djunit.jupiter.execution.parallel.enabled=true   -Djunit.jupiter.execution.parallel.mode.default=concurrent   -Djunit.jupiter.execution.parallel.config.strategy=fixed   -Djunit.jupiter.execution.parallel.config.fixed.parallelism=8
-```
+Re-enable parallelism (no commit needed):
+mvn -q test -Djunit.jupiter.execution.parallel.enabled=true -Djunit.jupiter.execution.parallel.mode.default=concurrent -Djunit.jupiter.execution.parallel.config.strategy=fixed -Djunit.jupiter.execution.parallel.config.fixed.parallelism=8
+
+
